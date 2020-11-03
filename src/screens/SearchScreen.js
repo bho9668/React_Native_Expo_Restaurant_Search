@@ -1,31 +1,27 @@
-// import React from 'react';
-// import { View, Text, StyleShet } from 'react-native';
-
-// function SearchScreen(props) {
-//     return (
-//         <View>
-//             <Text>Search Screen </Text>
-//         </View>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-    
-// })
-
-// export default SearchScreen;
-
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import SearchBar from '../components/SearchBar';
+import colors from '../config/colors';
 
-const SearchScreen = () => {
+function SearchScreen(props) {
+  const [term, setTerm] = useState('')
+  
   return (
-    <View>
-      <Text>Search Screen</Text>
-    </View>
+      <View style = { styles.background }>
+          <SearchBar 
+            term = { term } 
+            onTermChange = { () => setTerm() }
+            onTermSubmit = { () => console.log("term was submitted") }
+          />
+          <Text>Search Screen </Text>
+      </View>
   );
-};
+}
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    background: {
+      backgroundColor: colors.primary
+    }
+})
 
 export default SearchScreen;
